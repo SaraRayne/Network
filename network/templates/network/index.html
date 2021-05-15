@@ -1,0 +1,48 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <div id="heading">
+    </div>
+
+    {% if user.is_authenticated %}
+        <div id="new-post">
+            <h2>New Post</h2>
+            <form id="post-form">
+                <textarea id="create-post" rows="5" cols="50"></textarea>
+                <input id="submit" type="submit" value="Post">
+            </form>
+        </div>
+    {% endif %}
+
+    <div id="profile-view">
+        <div id="following-num">
+        </div>
+        <div id="followers-num">
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+        <div id="follow-button">
+            <form id="follow-form">
+                <button type="submit" id="follow-unfollow"></button>
+            </form>
+        </div>
+    {% endif %}
+
+    <div id="posts">
+    </div>
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#" name="0" id="previous">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#" name="2" id="next">Next</a></li>
+        </ul>
+    </nav>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
